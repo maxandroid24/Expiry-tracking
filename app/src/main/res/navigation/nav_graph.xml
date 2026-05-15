@@ -21,7 +21,7 @@
         <argument android:name="productId" app:argType="long" android:defaultValue="0L" />
     </fragment>
     <fragment android:id="@+id/ocrPreviewFragment" android:name="com.expirytracker.app.presentation.ocr.OcrPreviewFragment" android:label="Review Scan">
-        <argument android:name="imageUri" app:argType="string" android:nullable="true" android:defaultValue="@null" />
+        <argument android:name="imageUri" app:argType="string" app:nullable="true" android:defaultValue="@null" />
     </fragment>
     <fragment android:id="@+id/productDetailsFragment" android:name="com.expirytracker.app.presentation.details.ProductDetailsFragment" android:label="Product Details">
         <argument android:name="productId" app:argType="long" />

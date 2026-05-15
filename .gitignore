@@ -2,7 +2,8 @@
 .idea/
 .tools/
 .gradle-log/
-gradle-build-log.zip
+.gradle-log-*/
+gradle-build-log*.zip
 local.properties
 build/
 app/build/
