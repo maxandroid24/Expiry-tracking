@@ -4,6 +4,7 @@
 .gradle-log/
 .gradle-log-*/
 gradle-build-log*.zip
+build.log
 local.properties
 build/
 app/build/
