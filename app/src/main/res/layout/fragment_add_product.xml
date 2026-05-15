@@ -1,0 +1,58 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@android:drawable/ic_menu_revert"
+            app:title="Add Product" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <com.google.android.material.textfield.TextInputLayout style="@style/Widget.ExpiryTracker.TextInput" android:id="@+id/nameLayout" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Product name">
+                <com.google.android.material.textfield.TextInputEditText android:id="@+id/nameInput" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textCapWords" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout style="@style/Widget.ExpiryTracker.TextInput" android:id="@+id/categoryLayout" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:hint="Category">
+                <com.google.android.material.textfield.TextInputEditText android:id="@+id/categoryInput" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textCapWords" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout style="@style/Widget.ExpiryTracker.TextInput" android:id="@+id/manufacturedLayout" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:hint="Manufacturer date" app:endIconDrawable="@android:drawable/ic_menu_month" app:endIconMode="custom">
+                <com.google.android.material.textfield.TextInputEditText android:id="@+id/manufacturedInput" android:layout_width="match_parent" android:layout_height="wrap_content" android:focusable="false" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout style="@style/Widget.ExpiryTracker.TextInput" android:id="@+id/expiryLayout" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:hint="Expiry date" app:endIconDrawable="@android:drawable/ic_menu_month" app:endIconMode="custom">
+                <com.google.android.material.textfield.TextInputEditText android:id="@+id/expiryInput" android:layout_width="match_parent" android:layout_height="wrap_content" android:focusable="false" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout style="@style/Widget.ExpiryTracker.TextInput" android:id="@+id/notesLayout" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:hint="Notes">
+                <com.google.android.material.textfield.TextInputEditText android:id="@+id/notesInput" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="top" android:inputType="textMultiLine" android:minLines="3" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:orientation="horizontal">
+                <com.google.android.material.button.MaterialButton android:id="@+id/cameraButton" style="@style/Widget.Material3.Button.OutlinedButton" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginEnd="8dp" android:layout_weight="1" android:text="Camera" app:icon="@android:drawable/ic_menu_camera" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/galleryButton" style="@style/Widget.Material3.Button.OutlinedButton" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Gallery" app:icon="@android:drawable/ic_menu_gallery" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/saveButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Save Product" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

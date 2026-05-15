@@ -1,0 +1,12 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <com.google.android.material.appbar.MaterialToolbar android:id="@+id/toolbar" android:layout_width="match_parent" android:layout_height="?attr/actionBarSize" app:navigationIcon="@android:drawable/ic_menu_revert" app:title="Review Scan" />
+        <ImageView android:id="@+id/previewImage" android:layout_width="match_parent" android:layout_height="220dp" android:contentDescription="Scanned product image" android:scaleType="centerCrop" />
+        <include android:id="@+id/form" layout="@layout/view_product_form" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/saveButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="16dp" android:text="Save Verified Product" />
+    </LinearLayout>
+</ScrollView>

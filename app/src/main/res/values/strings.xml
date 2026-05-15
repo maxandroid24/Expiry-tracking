@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Expiry Tracker</string>
+    <string name="channel_expiry_reminders">Expiry reminders</string>
+    <string name="channel_expiry_reminders_description">Notifications for products that are about to expire.</string>
+</resources>

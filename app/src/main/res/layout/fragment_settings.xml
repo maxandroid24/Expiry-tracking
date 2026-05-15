@@ -1,0 +1,16 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar android:id="@+id/toolbar" android:layout_width="match_parent" android:layout_height="?attr/actionBarSize" app:navigationIcon="@android:drawable/ic_menu_revert" app:title="Settings" />
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Expiring soon threshold" android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+        <com.google.android.material.slider.Slider android:id="@+id/thresholdSlider" android:layout_width="match_parent" android:layout_height="wrap_content" app:valueFrom="1" app:valueTo="30" app:value="7" app:stepSize="1" />
+        <TextView android:id="@+id/thresholdValue" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/backupButton" style="@style/Widget.Material3.Button.OutlinedButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:text="Backup Products" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/restoreButton" style="@style/Widget.Material3.Button.OutlinedButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="Restore Products" />
+    </LinearLayout>
+</LinearLayout>

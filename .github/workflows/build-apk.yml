@@ -1,0 +1,62 @@
+name: Build Android APK
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - labeled
+      - synchronize
+      - reopened
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build debug APK
+    runs-on: ubuntu-latest
+    if: >
+      github.event_name == 'push' ||
+      (
+        github.event_name == 'pull_request' &&
+        contains(github.event.pull_request.labels.*.name, 'build apk')
+      )
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: 8.10.2
+
+      - name: Make Gradle wrapper executable
+        if: hashFiles('gradlew') != ''
+        run: chmod +x ./gradlew
+
+      - name: Build APK with wrapper
+        if: hashFiles('gradlew') != ''
+        run: ./gradlew assembleDebug --stacktrace
+
+      - name: Build APK with installed Gradle
+        if: hashFiles('gradlew') == ''
+        run: gradle assembleDebug --stacktrace
+
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: expiry-tracker-debug-apk
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
