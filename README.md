@@ -57,3 +57,5 @@ app/src/main/java/com/expirytracker/app
 ```
 
 This environment does not include Java or Gradle, so compilation should be performed from Android Studio or a machine with the Android toolchain installed.
+
+APK - https://github.com/maxandroid24/Expiry-tracking/actions/runs/25938406032/artifacts/7025393293
