@@ -23,9 +23,12 @@ class JsonBackupRepository @Inject constructor(
         runCatching {
             val products = productRepository.observeProducts().first()
             val json = JSONArray(products.map { it.toJson() })
-            context.contentResolver.openOutputStream(destination)?.use { output ->
+            requireNotNull(context.contentResolver.openOutputStream(destination)) {
+                "Unable to open backup destination"
+            }.use { output ->
                 output.write(json.toString(2).toByteArray())
             }
+            Unit
         }
     }
 
@@ -36,6 +39,7 @@ class JsonBackupRepository @Inject constructor(
             for (index in 0 until json.length()) {
                 productRepository.addProduct(json.getJSONObject(index).toProduct())
             }
+            Unit
         }
     }
 
