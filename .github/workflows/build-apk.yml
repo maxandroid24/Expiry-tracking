@@ -56,7 +56,13 @@ jobs:
           ./gradlew assembleDebug --no-daemon --console=plain > build.log 2>&1
           status=$?
           set -e
-          grep -n -E "FAILURE:|What went wrong|A problem occurred|Execution failed|Could not|requires|error:" build.log | head -n 80 || true
+          awk '
+            /FAILURE:|What went wrong|A problem occurred|Execution failed|Could not|requires|error:/ {
+              start = NR > 6 ? NR - 6 : 1
+              end = NR + 35
+            }
+            NR >= start && NR <= end { print }
+          ' build.log | head -n 180 || true
           tail -n 160 build.log
           exit $status
 
@@ -67,9 +73,23 @@ jobs:
           gradle assembleDebug --no-daemon --console=plain > build.log 2>&1
           status=$?
           set -e
-          grep -n -E "FAILURE:|What went wrong|A problem occurred|Execution failed|Could not|requires|error:" build.log | head -n 80 || true
+          awk '
+            /FAILURE:|What went wrong|A problem occurred|Execution failed|Could not|requires|error:/ {
+              start = NR > 6 ? NR - 6 : 1
+              end = NR + 35
+            }
+            NR >= start && NR <= end { print }
+          ' build.log | head -n 180 || true
           tail -n 160 build.log
           exit $status
+
+      - name: Upload Gradle build log
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gradle-build-log
+          path: build.log
+          if-no-files-found: ignore
 
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
