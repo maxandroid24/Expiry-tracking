@@ -52,16 +52,20 @@ jobs:
       - name: Build APK with wrapper
         if: hashFiles('gradlew') != ''
         run: |
+          set +e
           ./gradlew assembleDebug --no-daemon --console=plain > build.log 2>&1
           status=$?
+          set -e
           tail -n 160 build.log
           exit $status
 
       - name: Build APK with installed Gradle
         if: hashFiles('gradlew') == ''
         run: |
+          set +e
           gradle assembleDebug --no-daemon --console=plain > build.log 2>&1
           status=$?
+          set -e
           tail -n 160 build.log
           exit $status
 
