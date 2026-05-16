@@ -6,6 +6,7 @@
 gradle-build-log*.zip
 build.log
 local.properties
+gradle.properties
 build/
 app/build/
 *.iml

@@ -6,6 +6,7 @@
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
         <com.google.android.material.appbar.MaterialToolbar android:id="@+id/toolbar" android:layout_width="match_parent" android:layout_height="?attr/actionBarSize" app:navigationIcon="@android:drawable/ic_menu_revert" app:title="Review Scan" />
         <ImageView android:id="@+id/previewImage" android:layout_width="match_parent" android:layout_height="220dp" android:contentDescription="Scanned product image" android:scaleType="centerCrop" />
+        <com.google.android.material.chip.Chip android:id="@+id/sourceChip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="end" android:layout_marginEnd="16dp" android:layout_marginTop="-24dp" android:visibility="gone" app:chipIcon="@android:drawable/ic_menu_info_details" />
         <include android:id="@+id/form" layout="@layout/view_product_form" />
         <com.google.android.material.button.MaterialButton android:id="@+id/saveButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="16dp" android:text="Save Verified Product" />
     </LinearLayout>

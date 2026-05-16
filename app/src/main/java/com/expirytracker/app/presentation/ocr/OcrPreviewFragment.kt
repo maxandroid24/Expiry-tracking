@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import coil.load
 import com.expirytracker.app.databinding.FragmentOcrPreviewBinding
 import com.expirytracker.app.domain.model.ExtractedProduct
+import com.expirytracker.app.domain.model.ExtractionSource
 import com.expirytracker.app.util.DateFormats
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.snackbar.Snackbar
@@ -56,7 +57,16 @@ class OcrPreviewFragment : Fragment() {
 
     private fun render(state: OcrPreviewUiState) {
         binding.saveButton.isEnabled = !state.isLoading
-        state.extractedProduct?.let(::fillForm)
+        state.extractedProduct?.let { product ->
+            fillForm(product)
+            binding.sourceChip.apply {
+                visibility = View.VISIBLE
+                text = when (product.source) {
+                    ExtractionSource.ONLINE_AI -> "Gemini AI"
+                    ExtractionSource.OFFLINE_OCR -> "On-device OCR"
+                }
+            }
+        }
         state.error?.let { Snackbar.make(binding.root, it, Snackbar.LENGTH_LONG).show() }
         if (state.saved) findNavController().popBackStack()
     }
